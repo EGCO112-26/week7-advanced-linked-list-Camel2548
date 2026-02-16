@@ -116,7 +116,7 @@ void printList( LLPtr currentPtr ){
             printf( "%d %s -->", tempPtr->id, tempPtr->name ); // เอาเว้นวรรคด้านหลังออก
             
             if ( tempPtr->nextPtr != NULL ) {
-                printf( " " ); // เติมเว้นวรรคเฉพาะตอนที่ยังมี Node ถัดไป
+                //printf( " " ); // เติมเว้นวรรคเฉพาะตอนที่ยังมี Node ถัดไป
             }
             
             tempPtr = tempPtr->nextPtr;
@@ -135,7 +135,7 @@ void printListR( LLPtr currentPtr ){
             printf( "%d %s -->", tempPtr->id, tempPtr->name ); // เอาเว้นวรรคด้านหลังออก
             
             if ( tempPtr->pPtr != NULL ) {
-                printf( " " ); // เติมเว้นวรรคเฉพาะตอนที่ยังมี Node ย้อนกลับ
+             //   printf( " " ); // เติมเว้นวรรคเฉพาะตอนที่ยังมี Node ย้อนกลับ
             }
             
             tempPtr = tempPtr->pPtr; 
