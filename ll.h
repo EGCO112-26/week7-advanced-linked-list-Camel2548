@@ -17,7 +17,7 @@ typedef struct Node LLnode;
 typedef LLnode *LLPtr;
 
 // ---------------------------------------------------------
-// ย้ายฟังก์ชัน isEmpty มาไว้ด้านบนสุด เพื่อให้ฟังก์ชันอื่นรู้จัก
+// ฟังก์ชัน isEmpty
 // ---------------------------------------------------------
 int isEmpty( LLPtr sPtr ){
     return sPtr == NULL;
@@ -72,7 +72,6 @@ void insert( LLPtr *sPtr, int id, char name[] ){
 }
 
 int deletes( LLPtr *sPtr, int id ){
-    // ตอนนี้คอมไพเลอร์รู้จัก isEmpty แล้ว เพราะเราย้ายไปไว้ด้านบน
     if ( isEmpty( *sPtr ) ) return 0; 
 
     if ( id == ( *sPtr )->id ) {
@@ -114,22 +113,31 @@ void printList( LLPtr currentPtr ){
         puts( "The list is:" );
         LLPtr tempPtr = currentPtr;
         while ( tempPtr != NULL ) {
-            printf( "%d %s --> ", tempPtr->id, tempPtr->name );
+            printf( "%d %s -->", tempPtr->id, tempPtr->name ); // เอาเว้นวรรคด้านหลังออก
+            
+            if ( tempPtr->nextPtr != NULL ) {
+                printf( " " ); // เติมเว้นวรรคเฉพาะตอนที่ยังมี Node ถัดไป
+            }
+            
             tempPtr = tempPtr->nextPtr;
         } 
-        puts( "NULL" );
+        puts( "NULL" ); // ตรงนี้จะพิมพ์ติดกับ --> กลายเป็น -->NULL พอดี
     } 
 }
 
 void printListR( LLPtr currentPtr ){
-    // แก้ชื่อให้ตรงกับที่ไฟล์ main เรียกใช้ (printListR)
     if ( !isEmpty( currentPtr ) ) {
         LLPtr tempPtr = currentPtr;
         while ( tempPtr->nextPtr != NULL ) {
             tempPtr = tempPtr->nextPtr;
         } 
         while ( tempPtr != NULL ) {
-            printf( "%d %s --> ", tempPtr->id, tempPtr->name );
+            printf( "%d %s -->", tempPtr->id, tempPtr->name ); // เอาเว้นวรรคด้านหลังออก
+            
+            if ( tempPtr->pPtr != NULL ) {
+                printf( " " ); // เติมเว้นวรรคเฉพาะตอนที่ยังมี Node ย้อนกลับ
+            }
+            
             tempPtr = tempPtr->pPtr; 
         } 
         puts( "NULL" );
